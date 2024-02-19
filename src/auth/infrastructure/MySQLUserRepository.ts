@@ -12,8 +12,6 @@ interface UserMySQL extends RowDataPacket {
   password: string;
   isAdmin: boolean;
   photo: string;
-  createdAt: Date;
-  updatedAt: Date;
 }
 
 @injectable()
@@ -27,13 +25,11 @@ export class MySQLUserRepository
 
   findByEmail = async (email: string): Promise<User | null> => {
     const sql =
-      "SELECT id, email, password, is_admin, photo, created_at, updated_at FROM users WHERE email = ? LIMIT 1";
+      "SELECT id, email, password, is_admin, photo FROM users WHERE email = ? LIMIT 1";
 
     const userMySQL = (
       await this.dbContext.query<UserMySQL[]>(sql, [email])
     )[0];
-
-    
 
     if (!userMySQL) return null;
 
@@ -43,8 +39,6 @@ export class MySQLUserRepository
       password: userMySQL.password,
       isAdmin: userMySQL.isAdmin,
       photo: userMySQL.photo,
-      createdAt: userMySQL.createdAt,
-      updatedAt: userMySQL.updatedAt,
     });
   };
 

@@ -10,8 +10,6 @@ export interface UserPrimitive {
   password: string;
   isAdmin: boolean;
   photo: string;
-  createdAt: Date;
-  updatedAt: Date;
 }
 
 export class User extends AggregateRoot<UserId> {
@@ -47,9 +45,7 @@ export class User extends AggregateRoot<UserId> {
       props.isAdmin,
       props.photo
     );
-
-    user.createdAt = props.createdAt;
-    user.updatedAt = props.updatedAt;
+    
     return user;
   }
 

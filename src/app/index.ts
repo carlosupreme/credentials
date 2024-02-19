@@ -11,10 +11,11 @@ server
   .setConfig((app: express.Application) => {
     app.set("env", "development");
     app.use(cors());
+    app.options('*', cors());
     app.use(helmet());
     app.use(morgan("dev"));
     app.use(express.json());
-    app.use(express.urlencoded({ extended: true }));
+    app.use(express.urlencoded({ extended: false }));
   })
   .setErrorConfig((_app) => {
     // catch 404 and forward to error handler
