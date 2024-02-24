@@ -45,7 +45,7 @@ export class TeamController extends ApiController {
     }
 
     return this.json({
-      teams: result.getValue(),
+      team: result.getValue(),
     });
   }
 

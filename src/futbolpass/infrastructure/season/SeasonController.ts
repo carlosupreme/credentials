@@ -59,7 +59,7 @@ export class SeasonController extends ApiController {
     }
 
     return this.json({
-      seasons: result.getValue(),
+      season: result.getValue(),
     });
   }
 }

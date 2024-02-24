@@ -34,7 +34,11 @@ export class PlayerController extends ApiController {
   @authenticated("get", "/:id")
   async show(@request() req: Request, @response() res: Response) {
     const { id } = req.params;
+    console.log(id);
+    
     const query = new GetPlayerByIdQuery(id);
+    console.log({ query });
+    
     const result = await this.mediator.send<ErrorOr<PlayerResponse>>(query);
 
     if (result.isError()) {

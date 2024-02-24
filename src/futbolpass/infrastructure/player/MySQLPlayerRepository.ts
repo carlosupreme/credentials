@@ -99,6 +99,8 @@ export class MySQLPlayerRepository
 
     if (!objMySQL) return null;
 
+    console.log({ objMySQL });
+
     const teamDetails = await this.getTeamDetailsById(objMySQL.team_details);
 
     return new Player(
