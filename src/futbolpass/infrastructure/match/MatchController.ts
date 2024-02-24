@@ -10,6 +10,7 @@ import { GetAllMatchesQuery } from "../../application/queries/match/GetAllMatche
 import { MatchResponse } from "../../application/MatchResponse";
 import { GetMatchByIdQuery } from "../../application/queries/match/GetMatchByIdQuery";
 import { CreateMatchCommand } from "../../application/commands/match/CreateMatchCommand";
+import { PlayerAssistsCommand } from "../../application/commands/match/PlayerAssistsCommand";
 
 @controller("/match")
 export class MatchController extends ApiController {
@@ -42,6 +43,24 @@ export class MatchController extends ApiController {
     }
 
     return res.json({
+      match: result.getValue(),
+    });
+  }
+
+  @authenticated("post", "/assists/:id")
+  async assists(@request() req: Request, @response() res: Response) {
+    const { id } = req.params;
+    const { playerId } = req.body;
+    const command = new PlayerAssistsCommand(id, playerId);
+
+    const result = await this.mediator.send<ErrorOr<MatchResponse>>(command);
+
+    if (result.isError()) {
+      return this.problem(result.errors!, res);
+    }
+
+    return res.json({
+      message: "Assist added",
       match: result.getValue(),
     });
   }

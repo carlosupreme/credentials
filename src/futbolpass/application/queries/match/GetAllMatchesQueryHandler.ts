@@ -3,7 +3,7 @@ import { GetAllMatchesQuery } from "./GetAllMatchesQuery";
 import { ErrorOr } from "../../../../shared/domain/errors/ErrorOr";
 import { inject, injectable } from "inversify";
 import { constants } from "../../../../app/constants";
-import { MatchResponse } from "../../MatchResponse";
+import { AttendanceResponse, MatchResponse } from "../../MatchResponse";
 import { MatchRepository } from "../../../domain/match/MatchRepository";
 
 @requestHandler(GetAllMatchesQuery)
@@ -30,7 +30,10 @@ export class GetAllMatchesQueryHandler
           match.name,
           match.date,
           match.homeScore,
-          match.awayScore
+          match.awayScore,
+          match.attendanceList.map(
+            (a) => new AttendanceResponse(a.playerId.value, a.assists)
+          )
         )
       );
     }

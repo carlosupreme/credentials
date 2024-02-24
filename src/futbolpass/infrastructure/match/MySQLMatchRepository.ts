@@ -9,6 +9,8 @@ import { Match } from "../../domain/match/Match";
 import { MatchId } from "../../domain/match/MatchId";
 import { SeasonId } from "../../domain/season/SeasonId";
 import { PlayerId } from "../../domain/player/PlayerId";
+import { Attendance } from "../../domain/match/AttendanceList";
+import { AttendanceId } from "../../domain/match/AttendanceListId";
 
 interface MatchMySQL extends RowDataPacket {
   id: string;
@@ -21,6 +23,13 @@ interface MatchMySQL extends RowDataPacket {
   date: Date;
 }
 
+interface AttendanceMySQL extends RowDataPacket {
+  id: string;
+  match_id: string;
+  player_id: string;
+  assist: boolean;
+}
+
 @injectable()
 export class MySQLMatchRepository
   extends DomainEventBus
@@ -30,10 +39,34 @@ export class MySQLMatchRepository
     super(mediator);
   }
 
+  async addPlayerAttendance(
+    matchId: MatchId,
+    playerId: PlayerId
+  ): Promise<void> {
+    await this.dbContext.query(
+      "UPDATE attendance_lists SET assist = ? WHERE match_id = ? AND player_id = ?",
+      [true, matchId.value, playerId.value]
+    );
+  }
 
-  saveAttendanceList(matchId: MatchId, playerId: PlayerId[]): Promise<void> {
-    const sql = "INSERT INTO attendance_lists(player_id, assists) VALUES(?, ?) WHERE id = ";
+  async getAttendanceList(matchId: MatchId): Promise<Attendance[]> {
+    const sql = `SELECT id, player_id, assist FROM attendance_lists WHERE match_id = ?`;
 
+    const attendanceMySQL = await this.dbContext.query<AttendanceMySQL[]>(sql, [
+      matchId.value,
+    ]);
+
+    if (!attendanceMySQL) return [];
+
+    return attendanceMySQL.map(
+      (attendance) =>
+        new Attendance(
+          new AttendanceId(attendance.id),
+          matchId,
+          new PlayerId(attendance.player_id),
+          attendance.assist
+        )
+    );
   }
 
   async all(): Promise<Match[]> {
@@ -46,16 +79,18 @@ export class MySQLMatchRepository
     const matches: Match[] = [];
 
     for (const matchMySQL of matchesMySQL) {
+      const id = new MatchId(matchMySQL.id);
       matches.push(
         new Match(
-          new MatchId(matchMySQL.id),
+          id,
           new SeasonId(matchMySQL.season_id),
           new TeamId(matchMySQL.home_team_id),
           new TeamId(matchMySQL.away_team_id),
           matchMySQL.name,
           matchMySQL.date,
           matchMySQL.home_score,
-          matchMySQL.away_score
+          matchMySQL.away_score,
+          await this.getAttendanceList(id)
         )
       );
     }
@@ -76,15 +111,18 @@ export class MySQLMatchRepository
 
     if (!matchMySQL) return null;
 
+    const id = new MatchId(matchMySQL.id);
+
     return new Match(
-      new MatchId(matchMySQL.id),
+      id,
       new SeasonId(matchMySQL.season_id),
       new TeamId(matchMySQL.home_team_id),
       new TeamId(matchMySQL.away_team_id),
       matchMySQL.name,
       matchMySQL.date,
       matchMySQL.home_score,
-      matchMySQL.away_score
+      matchMySQL.away_score,
+      await this.getAttendanceList(id)
     );
   }
 
@@ -94,6 +132,7 @@ export class MySQLMatchRepository
     try {
       await Promise.all([
         this.insertMatch(match),
+        this.insertAttendanceList(match),
         this.dbContext.commit(),
         this.publishEvents([match]),
       ]);
@@ -120,5 +159,19 @@ export class MySQLMatchRepository
         match.awayScore,
       ]
     );
+  }
+
+  async insertAttendanceList(match: Match): Promise<void> {
+    for (const attendance of match.attendanceList) {
+      await this.dbContext.query(
+        "INSERT INTO attendance_lists(id, match_id, player_id, assist) VALUES(?, ?, ?, ?)",
+        [
+          attendance.id.value,
+          match.id.value,
+          attendance.playerId.value,
+          attendance.assists,
+        ]
+      );
+    }
   }
 }

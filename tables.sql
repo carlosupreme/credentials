@@ -31,15 +31,13 @@ create table matches(
     season_id varchar(255) not null,
     home_team_id varchar(255) not null,
     away_team_id varchar(255) not null,
-    attendance_list_id varchar(255) not null,
     name varchar(255) not null,
     home_score int not null default 0,
     away_score int not null default 0,
     date timestamp not null,
     foreign key (season_id) references seasons(id),
     foreign key (home_team_id) references teams(id),
-    foreign key (away_team_id) references teams(id),
-    foreign key (attendance_list_id) references attendance_lists(id)
+    foreign key (away_team_id) references teams(id)
 );
 
 create table player_team_details(

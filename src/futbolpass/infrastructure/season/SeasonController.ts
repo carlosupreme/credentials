@@ -30,7 +30,7 @@ export class SeasonController extends ApiController {
 
     return this.json({
       message: "Season created",
-      player: result.getValue(),
+      season: result.getValue(),
     });
   }
 

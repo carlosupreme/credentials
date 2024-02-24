@@ -4,7 +4,7 @@ import { ErrorOr } from "../../../../shared/domain/errors/ErrorOr";
 import { inject, injectable } from "inversify";
 import { constants } from "../../../../app/constants";
 import { DomainError } from "../../../../shared/domain/errors/DomainError";
-import { MatchResponse } from "../../MatchResponse";
+import { AttendanceResponse, MatchResponse } from "../../MatchResponse";
 import { MatchRepository } from "../../../domain/match/MatchRepository";
 import { MatchId } from "../../../domain/match/MatchId";
 
@@ -39,7 +39,10 @@ export class GetMatchByIdQueryHandler
         match.name,
         match.date,
         match.homeScore,
-        match.awayScore
+        match.awayScore,
+        match.attendanceList.map(
+          (a) => new AttendanceResponse(a.playerId.value, a.assists)
+        )
       )
     );
   }

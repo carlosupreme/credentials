@@ -8,6 +8,10 @@ export class MatchResponse {
     readonly date: Date,
     readonly homeScore: number,
     readonly awayScore: number,
-    readonly attendanceList: string[]
+    readonly attendanceList: AttendanceResponse[]
   ) {}
+}
+
+export class AttendanceResponse {
+  constructor(readonly playerId: string, readonly assists: boolean) {}
 }

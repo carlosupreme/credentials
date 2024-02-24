@@ -2,7 +2,9 @@ import { AggregateRoot } from "../../../shared/domain/AggregateRoot";
 import { MatchId } from "./MatchId";
 import { TeamId } from "../team/TeamId";
 import { SeasonId } from "../season/SeasonId";
+import { Attendance } from "./AttendanceList";
 import { PlayerId } from "../player/PlayerId";
+import { AttendanceId } from "./AttendanceListId";
 
 export class Match extends AggregateRoot<MatchId> {
   constructor(
@@ -14,9 +16,17 @@ export class Match extends AggregateRoot<MatchId> {
     readonly date: Date,
     private _homeScore: number,
     private _awayScore: number,
-    readonly attendanceList: PlayerId[]
+    readonly attendanceList: Attendance[]
   ) {
     super(id);
+  }
+
+  private static createAttendanceList(matchId: MatchId, playerIds: PlayerId[]) {
+    const attendanceList: Attendance[] = playerIds.map((playerId) => {
+      return new Attendance(AttendanceId.create(), matchId, playerId, false);
+    });
+
+    return attendanceList;
   }
 
   static create(
@@ -24,10 +34,12 @@ export class Match extends AggregateRoot<MatchId> {
     homeTeamId: string,
     awayTeamId: string,
     name: string,
-    date: Date
+    date: Date,
+    playerIds: PlayerId[]
   ) {
-    const game = new Match(
-      MatchId.create(),
+    const id = MatchId.create();
+    const match = new Match(
+      id,
       new SeasonId(seasonId),
       new TeamId(homeTeamId),
       new TeamId(awayTeamId),
@@ -35,14 +47,18 @@ export class Match extends AggregateRoot<MatchId> {
       date,
       0,
       0,
-      []
+      Match.createAttendanceList(id, playerIds)
     );
 
-    return game;
+    return match;
   }
 
-  addPlayerAttendance(playerId: PlayerId) {
-    this.attendanceList.push(playerId);
+  playerAssists(playerId: PlayerId) {
+    this.attendanceList.forEach((attendance) => {
+      if (attendance.playerId.equals(playerId)) {
+        attendance.playerAssists();
+      }
+    });
   }
 
   homeTeamScores() {
