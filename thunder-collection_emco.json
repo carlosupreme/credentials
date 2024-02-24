@@ -1,0 +1,348 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "emco",
+    "dateExported": "2024-02-24T07:34:44.343Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "683150b2-e4b9-4c99-967b-8f776bf9f3d9",
+            "colId": "842e3a41-9ad7-4944-bace-a701019edbfc",
+            "containerId": "",
+            "name": "login",
+            "url": "{{base_url}}/auth/login",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-12-29T23:07:02.486Z",
+            "modified": "2024-02-19T18:35:50.110Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"carlos2sosa1@gmail.com\",\n  \"password\": \"$Carlos1030\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "1c83b38c-12ed-4bdc-a0e5-a0f1dc73d8d4",
+            "colId": "842e3a41-9ad7-4944-bace-a701019edbfc",
+            "containerId": "",
+            "name": "register",
+            "url": "{{base_url}}/auth/register",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-01-08T00:09:00.998Z",
+            "modified": "2024-02-15T15:56:47.945Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"carlos2sosa1@gmail.com\",\n  \"password\": \"$Carlos1030\",\n  \"isAdmin\": false\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "0cfb184e-c4b2-41a2-8542-0cb9279cf12d",
+            "colId": "842e3a41-9ad7-4944-bace-a701019edbfc",
+            "containerId": "",
+            "name": "Greet user",
+            "url": "{{base_url}}/auth",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-01-08T00:10:17.157Z",
+            "modified": "2024-02-22T02:59:20.225Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlM2ZhZmNhLWQ4YTQtNGJlNi1iMTI0LTE4YzQ4NzZlMDdjMyIsImVtYWlsIjoiY2FybG9zMnNvc2ExQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJEhhbnoyd3pnR202SFNwMDJKMkFWc09mdmcuWkFPUmczdFpMci51VnMzS1FmUms5TWxzV2YuIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTcwODU3MDc0NiwiZXhwIjoxNzA5MTc1NTQ2fQ.jEoCYXf32Ruq1Ot28eqKUnfAN4qpO3vQO__2lX-U9os"
+            },
+            "tests": []
+        },
+        {
+            "_id": "282f82cc-da18-4fcb-962f-53a6a1822e1f",
+            "colId": "842e3a41-9ad7-4944-bace-a701019edbfc",
+            "containerId": "",
+            "name": "Create season",
+            "url": "{{base_url}}/season",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-02-22T02:40:41.743Z",
+            "modified": "2024-02-23T16:18:34.666Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n \"name\": \"sub 15 varonil\" ,\n \"startDate\": \"2024-02-21\",\n \"endDate\": \"2024-04-21\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlM2ZhZmNhLWQ4YTQtNGJlNi1iMTI0LTE4YzQ4NzZlMDdjMyIsImVtYWlsIjoiY2FybG9zMnNvc2ExQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJEhhbnoyd3pnR202SFNwMDJKMkFWc09mdmcuWkFPUmczdFpMci51VnMzS1FmUms5TWxzV2YuIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTcwODU3MDc0NiwiZXhwIjoxNzA5MTc1NTQ2fQ.jEoCYXf32Ruq1Ot28eqKUnfAN4qpO3vQO__2lX-U9os"
+            },
+            "tests": []
+        },
+        {
+            "_id": "bb20fb22-050d-42b8-8d0b-6d92f94a6604",
+            "colId": "842e3a41-9ad7-4944-bace-a701019edbfc",
+            "containerId": "",
+            "name": "Create Player",
+            "url": "{{base_url}}/player",
+            "method": "POST",
+            "sortNum": 35000,
+            "created": "2024-02-22T21:41:33.543Z",
+            "modified": "2024-02-24T06:20:35.897Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n \"fullName\": \"Carlos Sosa Perera\",\n \"age\": 21\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlM2ZhZmNhLWQ4YTQtNGJlNi1iMTI0LTE4YzQ4NzZlMDdjMyIsImVtYWlsIjoiY2FybG9zMnNvc2ExQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJEhhbnoyd3pnR202SFNwMDJKMkFWc09mdmcuWkFPUmczdFpMci51VnMzS1FmUms5TWxzV2YuIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTcwODU3MDc0NiwiZXhwIjoxNzA5MTc1NTQ2fQ.jEoCYXf32Ruq1Ot28eqKUnfAN4qpO3vQO__2lX-U9os"
+            },
+            "tests": []
+        },
+        {
+            "_id": "a1e843a0-c949-4c4c-b68d-72f7e2ce2c3b",
+            "colId": "842e3a41-9ad7-4944-bace-a701019edbfc",
+            "containerId": "",
+            "name": "Get Season",
+            "url": "{{base_url}}/season/8ad3000c-1254-4a0c-a50f-ab73b4047da0",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-02-22T03:01:17.401Z",
+            "modified": "2024-02-22T03:05:19.383Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlM2ZhZmNhLWQ4YTQtNGJlNi1iMTI0LTE4YzQ4NzZlMDdjMyIsImVtYWlsIjoiY2FybG9zMnNvc2ExQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJEhhbnoyd3pnR202SFNwMDJKMkFWc09mdmcuWkFPUmczdFpMci51VnMzS1FmUms5TWxzV2YuIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTcwODU3MDc0NiwiZXhwIjoxNzA5MTc1NTQ2fQ.jEoCYXf32Ruq1Ot28eqKUnfAN4qpO3vQO__2lX-U9os"
+            },
+            "tests": []
+        },
+        {
+            "_id": "39babe58-a326-49fa-8c87-0be28af9cad0",
+            "colId": "842e3a41-9ad7-4944-bace-a701019edbfc",
+            "containerId": "",
+            "name": "Get player",
+            "url": "{{base_url}}/player/bc522890-443c-4b2e-9f19-bd5aae4a86bf",
+            "method": "GET",
+            "sortNum": 42500,
+            "created": "2024-02-22T22:38:44.455Z",
+            "modified": "2024-02-23T16:16:59.030Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlM2ZhZmNhLWQ4YTQtNGJlNi1iMTI0LTE4YzQ4NzZlMDdjMyIsImVtYWlsIjoiY2FybG9zMnNvc2ExQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJEhhbnoyd3pnR202SFNwMDJKMkFWc09mdmcuWkFPUmczdFpMci51VnMzS1FmUms5TWxzV2YuIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTcwODU3MDc0NiwiZXhwIjoxNzA5MTc1NTQ2fQ.jEoCYXf32Ruq1Ot28eqKUnfAN4qpO3vQO__2lX-U9os"
+            },
+            "tests": []
+        },
+        {
+            "_id": "9a8739b1-bff7-454a-a5ab-c159ab5825e0",
+            "colId": "842e3a41-9ad7-4944-bace-a701019edbfc",
+            "containerId": "",
+            "name": "Get match",
+            "url": "{{base_url}}/match/bb8a106c-786d-4607-ae76-96af83eff46c",
+            "method": "GET",
+            "sortNum": 43125,
+            "created": "2024-02-24T07:05:52.592Z",
+            "modified": "2024-02-24T07:08:26.572Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlM2ZhZmNhLWQ4YTQtNGJlNi1iMTI0LTE4YzQ4NzZlMDdjMyIsImVtYWlsIjoiY2FybG9zMnNvc2ExQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJEhhbnoyd3pnR202SFNwMDJKMkFWc09mdmcuWkFPUmczdFpMci51VnMzS1FmUms5TWxzV2YuIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTcwODU3MDc0NiwiZXhwIjoxNzA5MTc1NTQ2fQ.jEoCYXf32Ruq1Ot28eqKUnfAN4qpO3vQO__2lX-U9os"
+            },
+            "tests": []
+        },
+        {
+            "_id": "acad6f8d-a021-4df5-b35a-73d15dc53290",
+            "colId": "842e3a41-9ad7-4944-bace-a701019edbfc",
+            "containerId": "",
+            "name": "Get all players ",
+            "url": "{{base_url}}/player",
+            "method": "GET",
+            "sortNum": 43750,
+            "created": "2024-02-24T06:29:10.359Z",
+            "modified": "2024-02-24T06:29:25.203Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlM2ZhZmNhLWQ4YTQtNGJlNi1iMTI0LTE4YzQ4NzZlMDdjMyIsImVtYWlsIjoiY2FybG9zMnNvc2ExQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJEhhbnoyd3pnR202SFNwMDJKMkFWc09mdmcuWkFPUmczdFpMci51VnMzS1FmUms5TWxzV2YuIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTcwODU3MDc0NiwiZXhwIjoxNzA5MTc1NTQ2fQ.jEoCYXf32Ruq1Ot28eqKUnfAN4qpO3vQO__2lX-U9os"
+            },
+            "tests": []
+        },
+        {
+            "_id": "d981d562-8f2e-4597-b34b-f49c7694eb0f",
+            "colId": "842e3a41-9ad7-4944-bace-a701019edbfc",
+            "containerId": "",
+            "name": "Get all matches",
+            "url": "{{base_url}}/match",
+            "method": "GET",
+            "sortNum": 44375,
+            "created": "2024-02-24T07:05:30.381Z",
+            "modified": "2024-02-24T07:05:44.248Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlM2ZhZmNhLWQ4YTQtNGJlNi1iMTI0LTE4YzQ4NzZlMDdjMyIsImVtYWlsIjoiY2FybG9zMnNvc2ExQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJEhhbnoyd3pnR202SFNwMDJKMkFWc09mdmcuWkFPUmczdFpMci51VnMzS1FmUms5TWxzV2YuIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTcwODU3MDc0NiwiZXhwIjoxNzA5MTc1NTQ2fQ.jEoCYXf32Ruq1Ot28eqKUnfAN4qpO3vQO__2lX-U9os"
+            },
+            "tests": []
+        },
+        {
+            "_id": "45d1dc66-ceb4-4550-b0dc-35251d5e238c",
+            "colId": "842e3a41-9ad7-4944-bace-a701019edbfc",
+            "containerId": "",
+            "name": "Get Team",
+            "url": "{{base_url}}/team/8ab89348-bbe5-43d3-abec-c39679f60131",
+            "method": "GET",
+            "sortNum": 45000,
+            "created": "2024-02-22T03:30:56.765Z",
+            "modified": "2024-02-24T06:33:42.548Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlM2ZhZmNhLWQ4YTQtNGJlNi1iMTI0LTE4YzQ4NzZlMDdjMyIsImVtYWlsIjoiY2FybG9zMnNvc2ExQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJEhhbnoyd3pnR202SFNwMDJKMkFWc09mdmcuWkFPUmczdFpMci51VnMzS1FmUms5TWxzV2YuIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTcwODU3MDc0NiwiZXhwIjoxNzA5MTc1NTQ2fQ.jEoCYXf32Ruq1Ot28eqKUnfAN4qpO3vQO__2lX-U9os"
+            },
+            "tests": []
+        },
+        {
+            "_id": "8e6be7a6-c8bf-4a3d-b75b-f698a4310190",
+            "colId": "842e3a41-9ad7-4944-bace-a701019edbfc",
+            "containerId": "",
+            "name": "all seasons",
+            "url": "{{base_url}}/season",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-02-22T03:02:23.888Z",
+            "modified": "2024-02-22T03:02:50.717Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlM2ZhZmNhLWQ4YTQtNGJlNi1iMTI0LTE4YzQ4NzZlMDdjMyIsImVtYWlsIjoiY2FybG9zMnNvc2ExQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJEhhbnoyd3pnR202SFNwMDJKMkFWc09mdmcuWkFPUmczdFpMci51VnMzS1FmUms5TWxzV2YuIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTcwODU3MDc0NiwiZXhwIjoxNzA5MTc1NTQ2fQ.jEoCYXf32Ruq1Ot28eqKUnfAN4qpO3vQO__2lX-U9os"
+            },
+            "tests": []
+        },
+        {
+            "_id": "63795cb6-0481-4765-909d-5ed8f36d05c7",
+            "colId": "842e3a41-9ad7-4944-bace-a701019edbfc",
+            "containerId": "",
+            "name": "Create team",
+            "url": "{{base_url}}/team",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2024-02-22T03:27:59.660Z",
+            "modified": "2024-02-23T16:19:33.201Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"seasonId\": \"8ad3000c-1254-4a0c-a50f-ab73b4047da0\",\n  \"name\": \"chivas\",\n  \"logo\": null\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlM2ZhZmNhLWQ4YTQtNGJlNi1iMTI0LTE4YzQ4NzZlMDdjMyIsImVtYWlsIjoiY2FybG9zMnNvc2ExQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJEhhbnoyd3pnR202SFNwMDJKMkFWc09mdmcuWkFPUmczdFpMci51VnMzS1FmUms5TWxzV2YuIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTcwODU3MDc0NiwiZXhwIjoxNzA5MTc1NTQ2fQ.jEoCYXf32Ruq1Ot28eqKUnfAN4qpO3vQO__2lX-U9os"
+            },
+            "tests": []
+        },
+        {
+            "_id": "a8c31dfb-1fdf-4a02-8f7e-fa4709e14e31",
+            "colId": "842e3a41-9ad7-4944-bace-a701019edbfc",
+            "containerId": "",
+            "name": "Create match",
+            "url": "{{base_url}}/match",
+            "method": "POST",
+            "sortNum": 65000,
+            "created": "2024-02-24T07:06:08.559Z",
+            "modified": "2024-02-24T07:08:08.483Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"seasonId\": \"8ad3000c-1254-4a0c-a50f-ab73b4047da0\",\n  \"name\": \"jornada 1\",\n  \"date\": \"2024-02-21\",\n  \"homeTeamId\": \"8ab89348-bbe5-43d3-abec-c39679f60131\",\n  \"awayTeamId\": \"b644e7c7-577a-4ce2-94bd-d0d78583b75a\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlM2ZhZmNhLWQ4YTQtNGJlNi1iMTI0LTE4YzQ4NzZlMDdjMyIsImVtYWlsIjoiY2FybG9zMnNvc2ExQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJEhhbnoyd3pnR202SFNwMDJKMkFWc09mdmcuWkFPUmczdFpMci51VnMzS1FmUms5TWxzV2YuIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTcwODU3MDc0NiwiZXhwIjoxNzA5MTc1NTQ2fQ.jEoCYXf32Ruq1Ot28eqKUnfAN4qpO3vQO__2lX-U9os"
+            },
+            "tests": []
+        },
+        {
+            "_id": "0e88c9f6-b74d-4c3b-bf87-a1e0b1d282c8",
+            "colId": "842e3a41-9ad7-4944-bace-a701019edbfc",
+            "containerId": "",
+            "name": "Team Sign player",
+            "url": "{{base_url}}/team/sign/8ab89348-bbe5-43d3-abec-c39679f60131",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-02-24T06:19:58.813Z",
+            "modified": "2024-02-24T06:38:59.142Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"playerId\": \"bc522890-443c-4b2e-9f19-bd5aae4a86bf\",\n  \"position\": \"portero\",\n  \"jerseyNumber\": 14\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlM2ZhZmNhLWQ4YTQtNGJlNi1iMTI0LTE4YzQ4NzZlMDdjMyIsImVtYWlsIjoiY2FybG9zMnNvc2ExQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJEhhbnoyd3pnR202SFNwMDJKMkFWc09mdmcuWkFPUmczdFpMci51VnMzS1FmUms5TWxzV2YuIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTcwODU3MDc0NiwiZXhwIjoxNzA5MTc1NTQ2fQ.jEoCYXf32Ruq1Ot28eqKUnfAN4qpO3vQO__2lX-U9os"
+            },
+            "tests": []
+        }
+    ]
+}
