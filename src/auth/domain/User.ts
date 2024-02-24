@@ -9,7 +9,6 @@ export interface UserPrimitive {
   email: string;
   password: string;
   isAdmin: boolean;
-  photo: string;
 }
 
 export class User extends AggregateRoot<UserId> {
@@ -17,8 +16,7 @@ export class User extends AggregateRoot<UserId> {
     id: UserId,
     readonly email: Email,
     readonly password: Password,
-    readonly isAdmin: boolean,
-    readonly photo: string
+    readonly isAdmin: boolean
   ) {
     super(id);
   }
@@ -27,10 +25,9 @@ export class User extends AggregateRoot<UserId> {
     id: UserId,
     email: Email,
     password: Password,
-    isAdmin: boolean,
-    photo: string
+    isAdmin: boolean
   ): User {
-    const user = new User(id, email, password, isAdmin, photo);
+    const user = new User(id, email, password, isAdmin);
 
     user.addDomainEvent(new UserRegistered(id.value, email.value, isAdmin));
 
@@ -42,10 +39,9 @@ export class User extends AggregateRoot<UserId> {
       new UserId(props.id),
       new Email(props.email),
       new Password(props.password),
-      props.isAdmin,
-      props.photo
+      props.isAdmin
     );
-    
+
     return user;
   }
 
@@ -55,7 +51,6 @@ export class User extends AggregateRoot<UserId> {
       email: this.email.value,
       password: this.password.value,
       isAdmin: this.isAdmin,
-      photo: this.photo,
     };
   }
 

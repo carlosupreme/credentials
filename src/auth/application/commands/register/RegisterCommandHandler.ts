@@ -11,7 +11,6 @@ import { RegisterCommand } from "./RegisterCommand";
 import { IRequestHandler, requestHandler } from "mediatr-ts";
 import { inject, injectable } from "inversify";
 import { constants } from "../../../../app/constants";
-import { DefaultPhotoProvider } from "../../../domain/DefaultPhotoProvider";
 
 @requestHandler(RegisterCommand)
 @injectable()
@@ -22,9 +21,7 @@ export class RegisterCommandHandler
     @inject(constants.UserRepository)
     private userRepository: UserRepository,
     @inject(constants.IJWTProvider)
-    private JWTProvider: IJWTProvider,
-    @inject(constants.DefaultPhotoProvider)
-    private defaultPhotoProvider: DefaultPhotoProvider
+    private JWTProvider: IJWTProvider
   ) {}
 
   handle = async (
@@ -38,8 +35,7 @@ export class RegisterCommandHandler
       UserId.create(),
       new Email(command.email),
       Password.hash(command.password),
-      command.isAdmin,
-      await this.defaultPhotoProvider.getPhotoUrlByEmail(command.email)
+      command.isAdmin
     );
 
     await this.userRepository.add(user);
@@ -50,7 +46,6 @@ export class RegisterCommandHandler
       new AuthenticationResponse(
         user.id.value,
         user.email.value,
-        user.photo,
         token
       )
     );

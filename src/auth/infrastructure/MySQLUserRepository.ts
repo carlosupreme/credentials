@@ -10,8 +10,7 @@ interface UserMySQL extends RowDataPacket {
   id: string;
   email: string;
   password: string;
-  isAdmin: boolean;
-  photo: string;
+  is_admin: boolean;
 }
 
 @injectable()
@@ -25,7 +24,7 @@ export class MySQLUserRepository
 
   findByEmail = async (email: string): Promise<User | null> => {
     const sql =
-      "SELECT id, email, password, is_admin, photo FROM users WHERE email = ? LIMIT 1";
+      "SELECT id, email, password, is_admin FROM users WHERE email = ? LIMIT 1";
 
     const userMySQL = (
       await this.dbContext.query<UserMySQL[]>(sql, [email])
@@ -37,8 +36,7 @@ export class MySQLUserRepository
       id: userMySQL.id,
       email: userMySQL.email,
       password: userMySQL.password,
-      isAdmin: userMySQL.isAdmin,
-      photo: userMySQL.photo,
+      isAdmin: userMySQL.is_admin,
     });
   };
 
@@ -52,20 +50,15 @@ export class MySQLUserRepository
         this.publishEvents([user]),
       ]);
     } catch (error) {
+      console.log({ error });
       await this.dbContext.rollback();
     }
   };
 
   private async insertUser(user: User) {
     await this.dbContext.query(
-      "INSERT INTO users(id, is_admin, email, password, photo) VALUES(?, ?, ?, ?, ?)",
-      [
-        user.id.value,
-        user.isAdmin,
-        user.email.value,
-        user.password.value,
-        user.photo,
-      ]
+      "INSERT INTO users(id, is_admin, email, password) VALUES(?, ?, ?, ?)",
+      [user.id.value, user.isAdmin, user.email.value, user.password.value]
     );
   }
 }

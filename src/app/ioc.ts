@@ -8,8 +8,16 @@ import { JsonWebTokenProvider } from "../auth/infrastructure/JsonWebTokenProvide
 import { IJWTProvider } from "../auth/domain/IJWTProvider";
 import { constants } from "./constants";
 import { DomainEventBus } from "../shared/infrastructure/PublishDomainEventsInterceptor";
-import { DefaultPhotoProvider } from "../auth/domain/DefaultPhotoProvider";
-import { UIAvatarsPhotoProvider } from "../auth/infrastructure/UIAvatarsPhotoProvider";
+import { DefaultPhotoProvider } from "../futbolpass/domain/player/DefaultPhotoProvider";
+import { UIAvatarsPhotoProvider } from "../futbolpass/infrastructure/player/UIAvatarsPhotoProvider";
+import { PlayerRepository } from "../futbolpass/domain/player/PlayerRepository";
+import { MySQLPlayerRepository } from "../futbolpass/infrastructure/player/MySQLPlayerRepository";
+import { MySQLSeasonRepository } from "../futbolpass/infrastructure/season/MySQLSeasonRepository";
+import { MySQLTeamRepository } from "../futbolpass/infrastructure/team/MySQLTeamRepository";
+import { SeasonRepository } from "../futbolpass/domain/season/SeasonRepository";
+import { TeamRepository } from "../futbolpass/domain/team/TeamRepository";
+import { MatchRepository } from "../futbolpass/domain/match/MatchRepository";
+import { MySQLMatchRepository } from "../futbolpass/infrastructure/match/MySQLMatchRepository";
 
 const container = new Container({
   skipBaseClassChecks: true,
@@ -51,5 +59,21 @@ container.bind<IJWTProvider>(constants.IJWTProvider).to(JsonWebTokenProvider);
 container
   .bind<DefaultPhotoProvider>(constants.DefaultPhotoProvider)
   .to(UIAvatarsPhotoProvider);
+
+container
+  .bind<SeasonRepository>(constants.SeasonRepository)
+  .to(MySQLSeasonRepository);
+
+container
+  .bind<TeamRepository>(constants.TeamRepository)
+  .to(MySQLTeamRepository);
+
+container
+  .bind<PlayerRepository>(constants.PlayerRepository)
+  .to(MySQLPlayerRepository);
+
+container
+  .bind<MatchRepository>(constants.MatchRepository)
+  .to(MySQLMatchRepository);
 
 export { container };

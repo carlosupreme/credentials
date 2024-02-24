@@ -9,8 +9,7 @@
   "id": "0000-0000-0000-0000",
   "isAdmin": false,
   "email": "email@example.com",
-  "password": "$2b$10$8tKo04cRR9...pH7q",
-  "photo": "path/to/image.png"
+  "password": "$2b$10$8tKo04cRR9...pH7q"
 }
 ```
 
@@ -78,7 +77,6 @@ Response:
   "user": {
     "id": "6ca3b7d7-4315-4865-953b-118c83a134bc",
     "email": "email@example.com",
-    "photo": "default-profile/photo.png",
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...mOc"
   }
 }
@@ -116,7 +114,6 @@ Response:
   "user": {
     "id": "6ca3b7d7-4315-4865-953b-118c83a134bc",
     "email": "email@example.com",
-    "photo": "default-profile/photo.png",
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...mOc"
   }
 }

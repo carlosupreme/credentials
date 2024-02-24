@@ -7,7 +7,10 @@ import {
 } from "inversify-express-utils";
 import { Mediator } from "mediatr-ts";
 import { ErrorOr } from "../../shared/domain/errors/ErrorOr";
-import { ApiController } from "../../shared/infrastructure/ApiController";
+import {
+  ApiController,
+  authenticated,
+} from "../../shared/infrastructure/ApiController";
 import { AuthenticationResponse } from "../application/AuthenticationResponse";
 import { RegisterCommand } from "../application/commands/register/RegisterCommand";
 import { LoginQuery } from "../application/queries/login/LoginQuery";
@@ -65,6 +68,14 @@ export class AuthController extends ApiController {
     return res.json({
       message: "Logged in successfully",
       user: loginResult.getValue(),
+    });
+  }
+
+  @authenticated("get", "/")
+  async show() {
+    return this.json({
+      message: "You are authenticated",
+      user: this.httpContext.user.details,
     });
   }
 }

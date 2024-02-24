@@ -30,7 +30,7 @@ export class LoginQueryHandler
     const token = this.JWTProvider.generate(user.toPrimitives());
 
     return ErrorOr.success(
-      new AuthenticationResponse(user.id.value, user.email.value, user.photo, token)
+      new AuthenticationResponse(user.id.value, user.email.value, token)
     );
   }
 }
