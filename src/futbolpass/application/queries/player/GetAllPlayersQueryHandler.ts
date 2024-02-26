@@ -27,7 +27,6 @@ export class GetAllPlayersQueryHandler
       playerResponse.push(
         new PlayerResponse(
           player.id.value,
-          player.userId.value,
           new PlayerTeamDetailsResponse(
             player.teamDetails.id.value,
             player.teamDetails.teamId ? player.teamDetails.teamId.value : null,

@@ -1,13 +1,10 @@
-import { UserId } from "../../../auth/domain/value-objects/UserId";
 import { AggregateRoot } from "../../../shared/domain/AggregateRoot";
 import { PlayerId } from "./PlayerId";
-import { TeamId } from "../team/TeamId";
 import { PlayerTeamDetails } from "./PlayerTeamDetails";
 
 export class Player extends AggregateRoot<PlayerId> {
   constructor(
     id: PlayerId,
-    readonly userId: UserId,
     readonly teamDetails: PlayerTeamDetails,
     readonly fullName: string,
     readonly age: number,
@@ -16,24 +13,20 @@ export class Player extends AggregateRoot<PlayerId> {
     super(id);
   }
 
-  static create(userId: string, fullName: string, age: number, photo: string) {
+  static create(
+    fullName: string,
+    age: number,
+    photo: string,
+    teamDetails: PlayerTeamDetails
+  ) {
     const player = new Player(
       PlayerId.create(),
-      new UserId(userId),
-      PlayerTeamDetails.create(null, null, null),
+      teamDetails,
       fullName,
       age,
       photo
     );
 
     return player;
-  }
-
-  assignCurrentTeam(teamId: TeamId) {
-    this.teamDetails.teamId = teamId;
-  }
-
-  currentTeam(): TeamId | null {
-    return this.teamDetails.teamId;
   }
 }

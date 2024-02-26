@@ -4,9 +4,11 @@ import { PlayerResponse } from "./CreatePlayerResponse";
 
 export class CreatePlayerCommand implements ICommand<ErrorOr<PlayerResponse>> {
   constructor(
-    readonly userId: string,
     readonly fullName: string,
     readonly age: number,
-    readonly photo: string | null
+    readonly photo: string | null,
+    readonly teamId: string,
+    readonly position: string,
+    readonly jerseyNumber: number
   ) {}
 }

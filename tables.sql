@@ -50,12 +50,10 @@ create table player_team_details(
 
 create table players(
     id varchar(255) primary key not null,
-    user_id varchar(255) not null,
     team_details varchar(255) not null,
     full_name varchar(255) not null,
     age int not null,
     photo varchar(255) not null,
-    foreign key (user_id) references users(id),
     foreign key (team_details) references player_team_details(id)
 );
 

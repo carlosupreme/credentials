@@ -1,7 +1,7 @@
 import { AggregateRoot } from "../../../shared/domain/AggregateRoot";
 import { MatchId } from "./MatchId";
 import { TeamId } from "../team/TeamId";
-import { SeasonId } from "../season/SeasonId";
+import { SeasonId } from "../league/SeasonId";
 import { Attendance } from "./AttendanceList";
 import { PlayerId } from "../player/PlayerId";
 import { AttendanceId } from "./AttendanceListId";

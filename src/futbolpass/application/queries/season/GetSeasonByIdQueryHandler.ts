@@ -4,8 +4,8 @@ import { inject, injectable } from "inversify";
 import { ErrorOr } from "../../../../shared/domain/errors/ErrorOr";
 import { SeasonResponse } from "../../SeasonResponse";
 import { constants } from "../../../../app/constants";
-import { SeasonRepository } from "../../../domain/season/SeasonRepository";
-import { SeasonId } from "../../../domain/season/SeasonId";
+import { SeasonRepository } from "../../../domain/league/SeasonRepository";
+import { SeasonId } from "../../../domain/league/SeasonId";
 import { DomainError } from "../../../../shared/domain/errors/DomainError";
 
 @requestHandler(GetSeasonByIdQuery)

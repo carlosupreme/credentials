@@ -18,7 +18,6 @@ import "../futbolpass/application/queries/season/GetSeasonByIdQueryHandler";
 
 import "../futbolpass/application/commands/team/CreateTeamCommandHandler";
 import "../futbolpass/application/queries/team/GetTeamByIdQueryHandler";
-import "../futbolpass/application/commands/team/sign/TeamSignsPlayerCommandHandler";
 
 import "../futbolpass/application/commands/player/CreatePlayerCommandHandler";
 import "../futbolpass/application/queries/player/GetPlayerByIdQueryHandler";

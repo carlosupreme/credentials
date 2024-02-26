@@ -1,6 +1,6 @@
 import { AggregateRoot } from "../../../shared/domain/AggregateRoot";
 import { PlayerId } from "../player/PlayerId";
-import { SeasonId } from "../season/SeasonId";
+import { SeasonId } from "../league/SeasonId";
 import { TeamId } from "./TeamId";
 
 export class Team extends AggregateRoot<TeamId> {

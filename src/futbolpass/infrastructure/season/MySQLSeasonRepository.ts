@@ -2,9 +2,9 @@ import { injectable } from "inversify";
 import { DomainEventBus } from "../../../shared/infrastructure/PublishDomainEventsInterceptor";
 import { MySQLConnection } from "../../../shared/infrastructure/MySQLConnection";
 import { Mediator } from "mediatr-ts";
-import { SeasonRepository } from "../../domain/season/SeasonRepository";
-import { Season } from "../../domain/season/Season";
-import { SeasonId } from "../../domain/season/SeasonId";
+import { SeasonRepository } from "../../domain/league/SeasonRepository";
+import { League } from "../../domain/league/League";
+import { SeasonId } from "../../domain/league/SeasonId";
 import { RowDataPacket } from "mysql2";
 import { MatchId } from "../../domain/match/MatchId";
 import { TeamId } from "../../domain/team/TeamId";
@@ -25,18 +25,18 @@ export class MySQLSeasonRepository
     super(mediator);
   }
 
-  async all(): Promise<Season[]> {
+  async all(): Promise<League[]> {
     const sql = `SELECT id, name, start_date, end_date FROM seasons;`;
 
     const seasonsMySQL = await this.dbContext.query<SeasonMySQL[]>(sql, []);
 
     if (!seasonsMySQL) return [];
 
-    const seasons: Season[] = [];
+    const seasons: League[] = [];
 
     for (const seasonMySQL of seasonsMySQL) {
       seasons.push(
-        new Season(
+        new League(
           new SeasonId(seasonMySQL.id),
           (await this.getMatches(seasonMySQL.id)).map((id) => new MatchId(id)),
           (await this.getTeams(seasonMySQL.id)).map((id) => new TeamId(id)),
@@ -50,7 +50,7 @@ export class MySQLSeasonRepository
     return seasons;
   }
 
-  async add(season: Season): Promise<void> {
+  async add(season: League): Promise<void> {
     await this.dbContext.beginTransaction();
 
     try {
@@ -68,22 +68,22 @@ export class MySQLSeasonRepository
     }
   }
 
-  private async insertSeason(season: Season) {
+  private async insertSeason(season: League) {
     await this.dbContext.query(
       "INSERT INTO seasons(id, name, start_date, end_date) VALUES(?, ?, ?, ?)",
       [season.id.value, season.name, season.startDate, season.endDate]
     );
   }
 
-  async findById(id: SeasonId): Promise<Season | null> {
+  async findById(id: SeasonId): Promise<League | null> {
     return await this.findOneBy("id", id.value);
   }
 
-  async findByName(name: string): Promise<Season | null> {
+  async findByName(name: string): Promise<League | null> {
     return await this.findOneBy("name", name);
   }
 
-  private async findOneBy(by: string, value: string): Promise<Season | null> {
+  private async findOneBy(by: string, value: string): Promise<League | null> {
     const sql = `SELECT id, name, start_date, end_date FROM seasons WHERE ${by} = ? LIMIT 1`;
 
     const seasonMySQL = (
@@ -92,7 +92,7 @@ export class MySQLSeasonRepository
 
     if (!seasonMySQL) return null;
 
-    return new Season(
+    return new League(
       new SeasonId(seasonMySQL.id),
       (await this.getMatches(seasonMySQL.id)).map((id) => new MatchId(id)),
       (await this.getTeams(seasonMySQL.id)).map((id) => new TeamId(id)),

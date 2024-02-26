@@ -1,7 +1,7 @@
 import { IRequestHandler, requestHandler } from "mediatr-ts";
 import { CreateSeasonCommand } from "./CreateSeasonCommand";
-import { SeasonRepository } from "../../../domain/season/SeasonRepository";
-import { Season } from "../../../domain/season/Season";
+import { SeasonRepository } from "../../../domain/league/SeasonRepository";
+import { League } from "../../../domain/league/League";
 import { ErrorOr } from "../../../../shared/domain/errors/ErrorOr";
 import { SeasonResponse } from "../../SeasonResponse";
 import { inject, injectable } from "inversify";
@@ -25,7 +25,7 @@ export class CreateSeasonCommandHandler
       );
     }
 
-    const season = Season.create(
+    const season = League.create(
       command.name,
       command.startDate,
       command.endDate
