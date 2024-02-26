@@ -1,6 +1,7 @@
 // !  Import controllers first
 
 // Controllers
+import "./HealthController";
 import "../auth/infrastructure/AuthController";
 import "../futbolpass/infrastructure/player/PlayerController";
 import "../futbolpass/infrastructure/season/SeasonController";

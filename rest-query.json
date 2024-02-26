@@ -1,56 +1,56 @@
 {
     "client": "Thunder Client",
     "collectionName": "Credentials",
-    "dateExported": "2024-02-26T05:12:18.863Z",
+    "dateExported": "2024-02-26T14:49:36.609Z",
     "version": "1.1",
     "folders": [
         {
-            "_id": "69bdaee0-4aca-4922-8450-04f1a6019216",
+            "_id": "36bfbeb2-01d7-4a87-a637-f784ec2a1678",
             "name": "season",
             "containerId": "",
-            "created": "2024-02-26T04:57:31.291Z",
+            "created": "2024-02-26T06:01:07.920Z",
             "sortNum": 10000
         },
         {
-            "_id": "83e82624-c716-4609-9ea5-dfd382dfadd6",
+            "_id": "4416c751-2089-45b2-8e69-ef866408a694",
             "name": "team",
             "containerId": "",
-            "created": "2024-02-26T04:57:57.130Z",
+            "created": "2024-02-26T06:01:07.921Z",
             "sortNum": 20000
         },
         {
-            "_id": "8beba304-1649-4260-850c-f5b3b7ed5535",
+            "_id": "57e2ed36-470f-4de8-9f85-b75316e471bb",
             "name": "player",
             "containerId": "",
-            "created": "2024-02-26T04:58:03.997Z",
+            "created": "2024-02-26T06:01:07.922Z",
             "sortNum": 30000
         },
         {
-            "_id": "d0ce05d7-096f-4d07-8369-029f35cb568d",
+            "_id": "bbc9a154-ee68-4f81-b03f-bba874e5c381",
             "name": "match",
             "containerId": "",
-            "created": "2024-02-26T04:58:26.999Z",
+            "created": "2024-02-26T06:01:07.923Z",
             "sortNum": 40000
         },
         {
-            "_id": "e8b8fa7f-8a1c-46d0-b075-70a828a5881a",
+            "_id": "160173f8-d141-4c8f-8992-d1acfcc0fea0",
             "name": "auth",
             "containerId": "",
-            "created": "2024-02-26T04:58:41.707Z",
+            "created": "2024-02-26T06:01:07.924Z",
             "sortNum": 50000
         }
     ],
     "requests": [
         {
-            "_id": "ee30251e-d30b-40e8-839f-317af2aef4df",
-            "colId": "17d961ff-13b6-45f2-90a0-72331ecf6910",
-            "containerId": "e8b8fa7f-8a1c-46d0-b075-70a828a5881a",
+            "_id": "89b02815-ebd5-4e5e-8f7e-955d156d98b8",
+            "colId": "307bd604-fc9b-45ff-9e99-6de50695c4f3",
+            "containerId": "160173f8-d141-4c8f-8992-d1acfcc0fea0",
             "name": "login",
             "url": "{{base_url}}/auth/login",
             "method": "POST",
             "sortNum": 10000,
-            "created": "2024-02-24T07:35:59.492Z",
-            "modified": "2024-02-26T04:57:14.301Z",
+            "created": "2024-02-26T06:01:07.921Z",
+            "modified": "2024-02-26T06:01:07.921Z",
             "headers": [
                 {
                     "name": "Accept",
@@ -71,15 +71,15 @@
             "tests": []
         },
         {
-            "_id": "fb946d1f-8811-4250-89f3-91a25e3b4896",
-            "colId": "17d961ff-13b6-45f2-90a0-72331ecf6910",
-            "containerId": "69bdaee0-4aca-4922-8450-04f1a6019216",
+            "_id": "5453cb7b-e46e-4f79-9c09-f1bee01d3367",
+            "colId": "307bd604-fc9b-45ff-9e99-6de50695c4f3",
+            "containerId": "36bfbeb2-01d7-4a87-a637-f784ec2a1678",
             "name": "Create season",
             "url": "{{base_url}}/season",
             "method": "POST",
             "sortNum": 10000,
-            "created": "2024-02-24T07:35:59.495Z",
-            "modified": "2024-02-26T04:56:04.905Z",
+            "created": "2024-02-26T06:01:07.924Z",
+            "modified": "2024-02-26T06:02:18.059Z",
             "headers": [
                 {
                     "name": "User-Agent",
@@ -95,20 +95,20 @@
             },
             "auth": {
                 "type": "bearer",
-                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlM2ZhZmNhLWQ4YTQtNGJlNi1iMTI0LTE4YzQ4NzZlMDdjMyIsImVtYWlsIjoiY2FybG9zMnNvc2ExQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJEhhbnoyd3pnR202SFNwMDJKMkFWc09mdmcuWkFPUmczdFpMci51VnMzS1FmUms5TWxzV2YuIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTcwODU3MDc0NiwiZXhwIjoxNzA5MTc1NTQ2fQ.jEoCYXf32Ruq1Ot28eqKUnfAN4qpO3vQO__2lX-U9os"
+                "bearer": "{{token}}"
             },
             "tests": []
         },
         {
-            "_id": "62ca88c6-e4c7-4d9d-bc4f-3f91bc1d121b",
-            "colId": "17d961ff-13b6-45f2-90a0-72331ecf6910",
-            "containerId": "83e82624-c716-4609-9ea5-dfd382dfadd6",
+            "_id": "ef9f3ca9-1433-492f-9ae5-b9c67466a5b8",
+            "colId": "307bd604-fc9b-45ff-9e99-6de50695c4f3",
+            "containerId": "4416c751-2089-45b2-8e69-ef866408a694",
             "name": "Get Team",
             "url": "{{base_url}}/team/f9e22707-f33c-462c-b2c3-2acbe7798062",
             "method": "GET",
             "sortNum": 10000,
-            "created": "2024-02-24T07:35:59.499Z",
-            "modified": "2024-02-26T05:10:56.338Z",
+            "created": "2024-02-26T06:01:07.928Z",
+            "modified": "2024-02-26T06:01:07.928Z",
             "headers": [
                 {
                     "name": "User-Agent",
@@ -124,15 +124,15 @@
             "tests": []
         },
         {
-            "_id": "735a96be-8d27-40a5-9d29-7e711bb9a274",
-            "colId": "17d961ff-13b6-45f2-90a0-72331ecf6910",
-            "containerId": "8beba304-1649-4260-850c-f5b3b7ed5535",
+            "_id": "40717c9a-5f5a-4856-a260-5875d6960623",
+            "colId": "307bd604-fc9b-45ff-9e99-6de50695c4f3",
+            "containerId": "57e2ed36-470f-4de8-9f85-b75316e471bb",
             "name": "Create Player",
             "url": "{{base_url}}/player",
             "method": "POST",
             "sortNum": 10000,
-            "created": "2024-02-24T07:35:59.500Z",
-            "modified": "2024-02-26T05:05:38.536Z",
+            "created": "2024-02-26T06:01:07.929Z",
+            "modified": "2024-02-26T06:01:07.929Z",
             "headers": [
                 {
                     "name": "User-Agent",
@@ -153,15 +153,15 @@
             "tests": []
         },
         {
-            "_id": "1cb834a0-1b67-4c58-ab89-3b32a34461d1",
-            "colId": "17d961ff-13b6-45f2-90a0-72331ecf6910",
-            "containerId": "d0ce05d7-096f-4d07-8369-029f35cb568d",
+            "_id": "d067bb6a-fa52-49c3-b701-7a77495a9ea4",
+            "colId": "307bd604-fc9b-45ff-9e99-6de50695c4f3",
+            "containerId": "bbc9a154-ee68-4f81-b03f-bba874e5c381",
             "name": "Get match",
             "url": "{{base_url}}/match/6a2bc3a3-74a2-4571-992f-bf9d3d8e9e7c",
             "method": "GET",
             "sortNum": 10000,
-            "created": "2024-02-24T07:35:59.505Z",
-            "modified": "2024-02-26T05:10:44.179Z",
+            "created": "2024-02-26T06:01:07.933Z",
+            "modified": "2024-02-26T06:01:07.933Z",
             "headers": [
                 {
                     "name": "User-Agent",
@@ -177,15 +177,15 @@
             "tests": []
         },
         {
-            "_id": "18059d4b-c914-4eeb-b016-3854a4ca35f9",
-            "colId": "17d961ff-13b6-45f2-90a0-72331ecf6910",
-            "containerId": "d0ce05d7-096f-4d07-8369-029f35cb568d",
+            "_id": "e972c95e-76f9-42f5-a619-73fd4e4f5c14",
+            "colId": "307bd604-fc9b-45ff-9e99-6de50695c4f3",
+            "containerId": "bbc9a154-ee68-4f81-b03f-bba874e5c381",
             "name": "Get all matches",
             "url": "{{base_url}}/match",
             "method": "GET",
             "sortNum": 15000,
-            "created": "2024-02-24T07:35:59.504Z",
-            "modified": "2024-02-26T05:10:34.292Z",
+            "created": "2024-02-26T06:01:07.932Z",
+            "modified": "2024-02-26T06:01:07.932Z",
             "headers": [
                 {
                     "name": "User-Agent",
@@ -201,15 +201,15 @@
             "tests": []
         },
         {
-            "_id": "3cc304e7-7c45-4298-b577-6076b42dbf57",
-            "colId": "17d961ff-13b6-45f2-90a0-72331ecf6910",
-            "containerId": "e8b8fa7f-8a1c-46d0-b075-70a828a5881a",
+            "_id": "414aacbf-a142-4c6c-9d7f-7fb3b30089d6",
+            "colId": "307bd604-fc9b-45ff-9e99-6de50695c4f3",
+            "containerId": "160173f8-d141-4c8f-8992-d1acfcc0fea0",
             "name": "register",
             "url": "{{base_url}}/auth/register",
             "method": "POST",
             "sortNum": 20000,
-            "created": "2024-02-24T07:35:59.493Z",
-            "modified": "2024-02-24T08:23:51.849Z",
+            "created": "2024-02-26T06:01:07.922Z",
+            "modified": "2024-02-26T06:01:07.922Z",
             "headers": [
                 {
                     "name": "Accept",
@@ -230,15 +230,15 @@
             "tests": []
         },
         {
-            "_id": "775646c1-1db7-4d81-9029-627cbd3866c8",
-            "colId": "17d961ff-13b6-45f2-90a0-72331ecf6910",
-            "containerId": "69bdaee0-4aca-4922-8450-04f1a6019216",
+            "_id": "7a47241d-945b-4941-b5f0-37d51fb8dc7b",
+            "colId": "307bd604-fc9b-45ff-9e99-6de50695c4f3",
+            "containerId": "36bfbeb2-01d7-4a87-a637-f784ec2a1678",
             "name": "Get Season",
             "url": "{{base_url}}/season/88ce30c2-8885-4a22-a4ba-a4e52e6e2f59",
             "method": "GET",
             "sortNum": 20000,
-            "created": "2024-02-24T07:35:59.496Z",
-            "modified": "2024-02-26T05:01:36.885Z",
+            "created": "2024-02-26T06:01:07.925Z",
+            "modified": "2024-02-26T06:01:07.925Z",
             "headers": [],
             "params": [],
             "auth": {
@@ -248,15 +248,15 @@
             "tests": []
         },
         {
-            "_id": "67499ff2-154a-43a5-9dac-5204b52afdb9",
-            "colId": "17d961ff-13b6-45f2-90a0-72331ecf6910",
-            "containerId": "83e82624-c716-4609-9ea5-dfd382dfadd6",
+            "_id": "6f051d06-6de4-4da4-8add-7708924a34d5",
+            "colId": "307bd604-fc9b-45ff-9e99-6de50695c4f3",
+            "containerId": "4416c751-2089-45b2-8e69-ef866408a694",
             "name": "Create team",
             "url": "{{base_url}}/team",
             "method": "POST",
             "sortNum": 20000,
-            "created": "2024-02-24T07:35:59.498Z",
-            "modified": "2024-02-26T05:01:30.918Z",
+            "created": "2024-02-26T06:01:07.927Z",
+            "modified": "2024-02-26T06:02:55.631Z",
             "headers": [
                 {
                     "name": "User-Agent",
@@ -267,7 +267,7 @@
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"seasonId\": \"88ce30c2-8885-4a22-a4ba-a4e52e6e2f59\",\n  \"name\": \"Marinela\",\n  \"logo\": null\n}",
+                "raw": "{\n  \"seasonId\": \"d7cf09c9-c463-43e0-86aa-49f6fa0e5440\",\n  \"name\": \"Marinela\",\n  \"logo\": null\n}",
                 "form": []
             },
             "auth": {
@@ -277,15 +277,15 @@
             "tests": []
         },
         {
-            "_id": "61ae4256-ac3c-4482-ac5e-3087306c6ff0",
-            "colId": "17d961ff-13b6-45f2-90a0-72331ecf6910",
-            "containerId": "8beba304-1649-4260-850c-f5b3b7ed5535",
+            "_id": "3b1bb1c3-38c8-4566-83a6-4278b12fd7c0",
+            "colId": "307bd604-fc9b-45ff-9e99-6de50695c4f3",
+            "containerId": "57e2ed36-470f-4de8-9f85-b75316e471bb",
             "name": "Get player",
             "url": "{{base_url}}/player/b3e32232-779c-4723-9448-9e6dc8e117ec",
             "method": "GET",
             "sortNum": 20000,
-            "created": "2024-02-24T07:35:59.501Z",
-            "modified": "2024-02-26T05:06:33.737Z",
+            "created": "2024-02-26T06:01:07.930Z",
+            "modified": "2024-02-26T06:01:07.930Z",
             "headers": [],
             "params": [],
             "auth": {
@@ -295,15 +295,15 @@
             "tests": []
         },
         {
-            "_id": "45070f14-a394-40ce-93bc-856f02e431f6",
-            "colId": "17d961ff-13b6-45f2-90a0-72331ecf6910",
-            "containerId": "d0ce05d7-096f-4d07-8369-029f35cb568d",
+            "_id": "8bd2cbb9-f3e9-43f0-8f30-3c0541c56c2f",
+            "colId": "307bd604-fc9b-45ff-9e99-6de50695c4f3",
+            "containerId": "bbc9a154-ee68-4f81-b03f-bba874e5c381",
             "name": "Create match",
             "url": "{{base_url}}/match",
             "method": "POST",
             "sortNum": 20000,
-            "created": "2024-02-24T07:35:59.506Z",
-            "modified": "2024-02-26T05:00:09.760Z",
+            "created": "2024-02-26T06:01:07.934Z",
+            "modified": "2024-02-26T06:01:07.934Z",
             "headers": [],
             "params": [],
             "body": {
@@ -318,15 +318,15 @@
             "tests": []
         },
         {
-            "_id": "eaa93b1a-cafe-45f2-a966-e1e1283498d5",
-            "colId": "17d961ff-13b6-45f2-90a0-72331ecf6910",
-            "containerId": "e8b8fa7f-8a1c-46d0-b075-70a828a5881a",
+            "_id": "ef09a2d5-2a99-49e2-8e91-264ee04567cf",
+            "colId": "307bd604-fc9b-45ff-9e99-6de50695c4f3",
+            "containerId": "160173f8-d141-4c8f-8992-d1acfcc0fea0",
             "name": "Greet user",
             "url": "{{base_url}}/auth",
             "method": "GET",
             "sortNum": 30000,
-            "created": "2024-02-24T07:35:59.494Z",
-            "modified": "2024-02-26T03:32:26.571Z",
+            "created": "2024-02-26T06:01:07.923Z",
+            "modified": "2024-02-26T06:01:07.923Z",
             "headers": [
                 {
                     "name": "Accept",
@@ -346,15 +346,15 @@
             "tests": []
         },
         {
-            "_id": "e3eb2f36-6313-4893-9600-591899580fca",
-            "colId": "17d961ff-13b6-45f2-90a0-72331ecf6910",
-            "containerId": "69bdaee0-4aca-4922-8450-04f1a6019216",
+            "_id": "e7290f23-7fbb-486d-8b14-05da57f49fb9",
+            "colId": "307bd604-fc9b-45ff-9e99-6de50695c4f3",
+            "containerId": "36bfbeb2-01d7-4a87-a637-f784ec2a1678",
             "name": "all seasons",
             "url": "{{base_url}}/season",
             "method": "GET",
             "sortNum": 30000,
-            "created": "2024-02-24T07:35:59.497Z",
-            "modified": "2024-02-26T05:00:54.765Z",
+            "created": "2024-02-26T06:01:07.926Z",
+            "modified": "2024-02-26T06:01:07.926Z",
             "headers": [],
             "params": [],
             "auth": {
@@ -364,15 +364,15 @@
             "tests": []
         },
         {
-            "_id": "6e4b7363-e2e1-44ef-b420-05e0a3008bc5",
-            "colId": "17d961ff-13b6-45f2-90a0-72331ecf6910",
-            "containerId": "8beba304-1649-4260-850c-f5b3b7ed5535",
+            "_id": "86f8f536-8dfb-452a-871f-dcd660be2f5e",
+            "colId": "307bd604-fc9b-45ff-9e99-6de50695c4f3",
+            "containerId": "57e2ed36-470f-4de8-9f85-b75316e471bb",
             "name": "Get all players ",
             "url": "{{base_url}}/player",
             "method": "GET",
             "sortNum": 30000,
-            "created": "2024-02-24T07:35:59.503Z",
-            "modified": "2024-02-26T05:10:50.235Z",
+            "created": "2024-02-26T06:01:07.931Z",
+            "modified": "2024-02-26T06:01:07.931Z",
             "headers": [
                 {
                     "name": "User-Agent",
@@ -388,15 +388,15 @@
             "tests": []
         },
         {
-            "_id": "94e0b0f2-6092-43df-89ae-5c910077d98b",
-            "colId": "17d961ff-13b6-45f2-90a0-72331ecf6910",
-            "containerId": "d0ce05d7-096f-4d07-8369-029f35cb568d",
+            "_id": "9e179cce-78a1-4166-9874-caf236d6ad76",
+            "colId": "307bd604-fc9b-45ff-9e99-6de50695c4f3",
+            "containerId": "bbc9a154-ee68-4f81-b03f-bba874e5c381",
             "name": "Player assits to match",
             "url": "{{base_url}}/match/assists/6a2bc3a3-74a2-4571-992f-bf9d3d8e9e7c",
             "method": "POST",
             "sortNum": 40000,
-            "created": "2024-02-24T08:31:56.127Z",
-            "modified": "2024-02-24T15:58:07.414Z",
+            "created": "2024-02-26T06:01:07.935Z",
+            "modified": "2024-02-26T06:01:07.935Z",
             "headers": [],
             "params": [],
             "body": {
@@ -408,6 +408,26 @@
                 "type": "bearer",
                 "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRlM2ZhZmNhLWQ4YTQtNGJlNi1iMTI0LTE4YzQ4NzZlMDdjMyIsImVtYWlsIjoiY2FybG9zMnNvc2ExQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJEhhbnoyd3pnR202SFNwMDJKMkFWc09mdmcuWkFPUmczdFpMci51VnMzS1FmUms5TWxzV2YuIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTcwODU3MDc0NiwiZXhwIjoxNzA5MTc1NTQ2fQ.jEoCYXf32Ruq1Ot28eqKUnfAN4qpO3vQO__2lX-U9os"
             },
+            "tests": []
+        },
+        {
+            "_id": "4902d253-1504-488c-8129-b4ec615fe54e",
+            "colId": "307bd604-fc9b-45ff-9e99-6de50695c4f3",
+            "containerId": "",
+            "name": "health",
+            "url": "{{base_url}}/health",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-02-26T14:28:52.786Z",
+            "modified": "2024-02-26T14:29:03.971Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
             "tests": []
         }
     ]
