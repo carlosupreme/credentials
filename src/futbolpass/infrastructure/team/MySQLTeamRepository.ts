@@ -86,10 +86,7 @@ export class MySQLTeamRepository
     const sql = `SELECT id, season_id, name, logo FROM teams WHERE ${by} = ? LIMIT 1`;
     const objMySQL = (await this.dbContext.query<TeamMySQL[]>(sql, [value]))[0];
 
-    if (!objMySQL) return null;
-
-    console.log(objMySQL);
-    
+    if (!objMySQL) return null
 
     return new Team(
       new TeamId(objMySQL.id),
@@ -104,9 +101,6 @@ export class MySQLTeamRepository
     const sql = "SELECT id from player_team_details WHERE team_id = ?";
     const ids = await this.dbContext.query(sql, [teamId]);
     const playerIds: string[] = [];
-
-    console.log({ids});
-    
 
     for (const id of ids) {
       const playerId = (await this.dbContext.query(

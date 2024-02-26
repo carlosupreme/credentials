@@ -58,31 +58,6 @@ export class MySQLPlayerRepository
     return players;
   }
 
-  async addTeamDetails(teamDetails: PlayerTeamDetails): Promise<void> {
-    await this.dbContext.beginTransaction();
-
-    try {
-      await Promise.all([
-        this.dbContext.query(
-          "UPDATE player_team_details SET team_id = ?, position = ?, jersey_number = ? WHERE id = ?",
-          [
-            teamDetails.teamId ? teamDetails.teamId.value : null,
-            teamDetails.position,
-            teamDetails.jerseyNumber,
-            teamDetails.id.value,
-          ]
-        ),
-        this.dbContext.commit(),
-      ]);
-    } catch (error) {
-      console.log({
-        playerMySQLError: error,
-      });
-
-      await this.dbContext.rollback();
-    }
-  }
-
   findById(id: PlayerId): Promise<Player | null> {
     return this.findOneBy("id", id.value);
   }
@@ -95,8 +70,6 @@ export class MySQLPlayerRepository
     )[0];
 
     if (!objMySQL) return null;
-
-    console.log({ objMySQL });
 
     const teamDetails = await this.getTeamDetailsById(objMySQL.team_details);
 
@@ -149,7 +122,7 @@ export class MySQLPlayerRepository
 
   private async insertPlayer(player: Player) {
     await this.dbContext.query(
-      "INSERT INTO players(id, team_details, full_name, age, photo) VALUES(?, ?, ?, ?, ?, ?)",
+      "INSERT INTO players(id, team_details, full_name, age, photo) VALUES(?, ?, ?, ?, ?)",
       [
         player.id.value,
         player.teamDetails.id.value,
