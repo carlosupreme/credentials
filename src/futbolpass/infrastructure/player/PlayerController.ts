@@ -35,10 +35,10 @@ export class PlayerController extends ApiController {
   async show(@request() req: Request, @response() res: Response) {
     const { id } = req.params;
     console.log(id);
-    
+
     const query = new GetPlayerByIdQuery(id);
     console.log({ query });
-    
+
     const result = await this.mediator.send<ErrorOr<PlayerResponse>>(query);
 
     if (result.isError()) {
@@ -52,9 +52,15 @@ export class PlayerController extends ApiController {
 
   @authenticated("post", "/")
   async create(@request() req: Request, @response() res: Response) {
-    const { fullName, age, photo } = req.body;
-    const userId = this.httpContext.user.details.id;
-    const command = new CreatePlayerCommand(userId, fullName, age, photo);
+    const { fullName, age, photo, teamId, position, jerseyNumber } = req.body;
+    const command = new CreatePlayerCommand(
+      fullName,
+      age,
+      photo,
+      teamId,
+      position,
+      jerseyNumber
+    );
 
     const result = await this.mediator.send<ErrorOr<PlayerResponse>>(command);
 

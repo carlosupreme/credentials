@@ -6,14 +6,12 @@ import { MySQLConnection } from "../../../shared/infrastructure/MySQLConnection"
 import { Mediator } from "mediatr-ts";
 import { PlayerId } from "../../domain/player/PlayerId";
 import { RowDataPacket } from "mysql2";
-import { UserId } from "../../../auth/domain/value-objects/UserId";
 import { PlayerTeamDetails } from "../../domain/player/PlayerTeamDetails";
 import { PlayerTeamDetailsId } from "../../domain/player/PlayerTeamDetailsId";
 import { TeamId } from "../../domain/team/TeamId";
 
 interface PlayerMySQL extends RowDataPacket {
   id: string;
-  user_id: string;
   team_details: string;
   full_name: string;
   age: number;
@@ -22,9 +20,9 @@ interface PlayerMySQL extends RowDataPacket {
 
 interface TeamDetailsMySQL extends RowDataPacket {
   id: string;
-  team_id: string | null;
-  position: string | null;
-  jersey_number: number | null;
+  team_id: string;
+  position: string;
+  jersey_number: number;
 }
 
 @injectable()
@@ -37,7 +35,7 @@ export class MySQLPlayerRepository
   }
 
   async all(): Promise<Player[]> {
-    const sql = `SELECT id, user_id, team_details, full_name, age, photo FROM players`;
+    const sql = `SELECT id, team_details, full_name, age, photo FROM players`;
 
     const playersMySQL = await this.dbContext.query<PlayerMySQL[]>(sql, []);
 
@@ -49,7 +47,6 @@ export class MySQLPlayerRepository
       players.push(
         new Player(
           new PlayerId(playerMySQL.id),
-          new UserId(playerMySQL.user_id),
           await this.getTeamDetailsById(playerMySQL.team_details),
           playerMySQL.full_name,
           playerMySQL.age,
@@ -91,7 +88,7 @@ export class MySQLPlayerRepository
   }
 
   private async findOneBy(by: string, value: string): Promise<Player | null> {
-    const sql = `SELECT id, user_id, team_details, full_name, age, photo FROM players WHERE ${by} = ? LIMIT 1`;
+    const sql = `SELECT id, team_details, full_name, age, photo FROM players WHERE ${by} = ? LIMIT 1`;
 
     const objMySQL = (
       await this.dbContext.query<PlayerMySQL[]>(sql, [value])
@@ -105,7 +102,6 @@ export class MySQLPlayerRepository
 
     return new Player(
       new PlayerId(objMySQL.id),
-      new UserId(objMySQL.user_id),
       teamDetails,
       objMySQL.full_name,
       objMySQL.age,
@@ -124,7 +120,7 @@ export class MySQLPlayerRepository
 
     const teamDetails = new PlayerTeamDetails(
       new PlayerTeamDetailsId(objMySQL.id),
-      objMySQL.team_id ? new TeamId(objMySQL.team_id) : null,
+      new TeamId(objMySQL.team_id),
       objMySQL.position,
       objMySQL.jersey_number
     );
@@ -153,10 +149,9 @@ export class MySQLPlayerRepository
 
   private async insertPlayer(player: Player) {
     await this.dbContext.query(
-      "INSERT INTO players(id, user_id, team_details, full_name, age, photo) VALUES(?, ?, ?, ?, ?, ?)",
+      "INSERT INTO players(id, team_details, full_name, age, photo) VALUES(?, ?, ?, ?, ?, ?)",
       [
         player.id.value,
-        player.userId.value,
         player.teamDetails.id.value,
         player.fullName,
         player.age,
@@ -171,7 +166,7 @@ export class MySQLPlayerRepository
 
     const params: any[] = [
       teamDetails.id.value,
-      teamDetails.teamId ? teamDetails.teamId.value : null,
+      teamDetails.teamId.value,
       teamDetails.position,
       teamDetails.jerseyNumber,
     ];

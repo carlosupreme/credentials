@@ -10,7 +10,6 @@ export class PlayerTeamDetailsResponse {
 export class PlayerResponse {
   constructor(
     readonly id: string,
-    readonly userId: string,
     readonly teamDetails: PlayerTeamDetailsResponse,
     readonly fullName: string,
     readonly age: number,

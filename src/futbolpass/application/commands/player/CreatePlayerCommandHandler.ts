@@ -10,6 +10,7 @@ import { DefaultPhotoProvider } from "../../../domain/player/DefaultPhotoProvide
 import { constants } from "../../../../app/constants";
 import { Player } from "../../../domain/player/Player";
 import { PlayerRepository } from "../../../domain/player/PlayerRepository";
+import { PlayerTeamDetails } from "../../../domain/player/PlayerTeamDetails";
 
 @requestHandler(CreatePlayerCommand)
 @injectable()
@@ -29,10 +30,14 @@ export class CreatePlayerCommandHandler
       (await this.defaultPhotoProvider.getPhotoUrlByName(command.fullName));
 
     const player = Player.create(
-      command.userId,
       command.fullName,
       command.age,
-      photo
+      photo,
+      PlayerTeamDetails.create(
+        command.teamId,
+        command.position,
+        command.jerseyNumber
+      )
     );
 
     await this.playerRepository.add(player);
@@ -40,10 +45,9 @@ export class CreatePlayerCommandHandler
     return ErrorOr.success(
       new PlayerResponse(
         player.id.value,
-        player.userId.value,
         new PlayerTeamDetailsResponse(
           player.teamDetails.id.value,
-          player.teamDetails.teamId ? player.teamDetails.teamId.value : null,
+          player.teamDetails.teamId.value,
           player.teamDetails.position,
           player.teamDetails.jerseyNumber
         ),
