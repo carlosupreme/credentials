@@ -7,7 +7,7 @@ import { TeamId } from "../../domain/team/TeamId";
 import { MatchRepository } from "../../domain/match/MatchRepository";
 import { Match } from "../../domain/match/Match";
 import { MatchId } from "../../domain/match/MatchId";
-import { SeasonId } from "../../domain/league/SeasonId";
+import { SeasonId } from "../../domain/season/SeasonId";
 import { PlayerId } from "../../domain/player/PlayerId";
 import { Attendance } from "../../domain/match/AttendanceList";
 import { AttendanceId } from "../../domain/match/AttendanceListId";

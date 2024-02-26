@@ -5,21 +5,49 @@ import { PlayerTeamDetailsId } from "./PlayerTeamDetailsId";
 export class PlayerTeamDetails extends Entity<PlayerTeamDetailsId> {
   constructor(
     id: PlayerTeamDetailsId,
-    readonly teamId: TeamId,
-    readonly position: string,
-    readonly jerseyNumber: number
+    private _teamId: TeamId | null,
+    private _position: string | null,
+    private _jerseyNumber: number | null
   ) {
     super(id);
   }
 
-  static create(teamId: string, position: string, jerseyNumber: number) {
+  static create(
+    teamId: TeamId | null,
+    position: string | null,
+    jerseyNumber: number | null
+  ) {
     const details = new PlayerTeamDetails(
       PlayerTeamDetailsId.create(),
-      new TeamId(teamId),
+      teamId,
       position,
       jerseyNumber
     );
 
     return details;
+  }
+
+  get teamId(): TeamId | null {
+    return this._teamId;
+  }
+
+  set teamId(teamId: TeamId) {
+    this._teamId = teamId;
+  }
+
+  get position(): string | null {
+    return this._position;
+  }
+
+  set position(position: string) {
+    this._position = position;
+  }
+
+  get jerseyNumber(): number | null {
+    return this._jerseyNumber;
+  }
+
+  set jerseyNumber(jerseyNumber: number) {
+    this._jerseyNumber = jerseyNumber;
   }
 }

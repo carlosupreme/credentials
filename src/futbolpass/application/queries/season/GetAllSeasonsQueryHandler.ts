@@ -4,7 +4,7 @@ import { ErrorOr } from "../../../../shared/domain/errors/ErrorOr";
 import { SeasonResponse } from "../../SeasonResponse";
 import { inject, injectable } from "inversify";
 import { constants } from "../../../../app/constants";
-import { SeasonRepository } from "../../../domain/league/SeasonRepository";
+import { SeasonRepository } from "../../../domain/season/SeasonRepository";
 
 @requestHandler(GetAllSeasonsQuery)
 @injectable()

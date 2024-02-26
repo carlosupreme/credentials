@@ -9,6 +9,7 @@ import { ErrorOr } from "../../../shared/domain/errors/ErrorOr";
 import { CreateTeamCommand } from "../../application/commands/team/CreateTeamCommand";
 import { TeamResponse } from "../../application/commands/team/TeamResponse";
 import { GetTeamByIdQuery } from "../../application/queries/team/GetTeamByIdQuery";
+import { TeamSignsPlayerCommand } from "../../application/commands/team/sign/TeamSignsPlayerCommand";
 
 @controller("/team")
 export class TeamController extends ApiController {
@@ -44,6 +45,29 @@ export class TeamController extends ApiController {
     }
 
     return this.json({
+      team: result.getValue(),
+    });
+  }
+
+  @authenticated("post", "/sign/:id")
+  async sign(@request() req: Request, @response() res: Response) {
+    const { id } = req.params;
+    const { playerId, position, jerseyNumber } = req.body;
+
+    const command = new TeamSignsPlayerCommand(
+      id,
+      playerId,
+      position,
+      jerseyNumber
+    );
+    const result = await this.mediator.send<ErrorOr<TeamResponse>>(command);
+
+    if (result.isError()) {
+      return this.problem(result.errors!, res);
+    }
+
+    return res.json({
+      message: "Team signed player succesfully",
       team: result.getValue(),
     });
   }

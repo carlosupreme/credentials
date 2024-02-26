@@ -36,6 +36,7 @@ export class GetPlayerByIdQueryHanler
     return ErrorOr.success(
       new PlayerResponse(
         player.id.value,
+        player.userId.value,
         new PlayerTeamDetailsResponse(
           player.teamDetails.id.value,
           player.teamDetails.teamId && player.teamDetails.teamId.value,

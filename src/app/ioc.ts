@@ -14,7 +14,7 @@ import { PlayerRepository } from "../futbolpass/domain/player/PlayerRepository";
 import { MySQLPlayerRepository } from "../futbolpass/infrastructure/player/MySQLPlayerRepository";
 import { MySQLSeasonRepository } from "../futbolpass/infrastructure/season/MySQLSeasonRepository";
 import { MySQLTeamRepository } from "../futbolpass/infrastructure/team/MySQLTeamRepository";
-import { SeasonRepository } from "../futbolpass/domain/league/SeasonRepository";
+import { SeasonRepository } from "../futbolpass/domain/season/SeasonRepository";
 import { TeamRepository } from "../futbolpass/domain/team/TeamRepository";
 import { MatchRepository } from "../futbolpass/domain/match/MatchRepository";
 import { MySQLMatchRepository } from "../futbolpass/infrastructure/match/MySQLMatchRepository";

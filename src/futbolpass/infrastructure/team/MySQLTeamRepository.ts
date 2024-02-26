@@ -7,7 +7,7 @@ import { Team } from "../../domain/team/Team";
 import { TeamId } from "../../domain/team/TeamId";
 import { RowDataPacket } from "mysql2";
 import { PlayerId } from "../../domain/player/PlayerId";
-import { SeasonId } from "../../domain/league/SeasonId";
+import { SeasonId } from "../../domain/season/SeasonId";
 
 interface TeamMySQL extends RowDataPacket {
   id: string;
