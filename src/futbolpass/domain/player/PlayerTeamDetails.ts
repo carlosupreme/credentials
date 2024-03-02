@@ -5,9 +5,9 @@ import { PlayerTeamDetailsId } from "./PlayerTeamDetailsId";
 export class PlayerTeamDetails extends Entity<PlayerTeamDetailsId> {
   constructor(
     id: PlayerTeamDetailsId,
-    readonly teamId: TeamId,
-    readonly position: string,
-    readonly jerseyNumber: number
+    public teamId: TeamId,
+    public position: string,
+    public jerseyNumber: number
   ) {
     super(id);
   }
@@ -21,5 +21,13 @@ export class PlayerTeamDetails extends Entity<PlayerTeamDetailsId> {
     );
 
     return details;
+  }
+
+  update(data: {
+    position: string,
+    jerseyNumber: number
+  }) {
+    this.position = data.position;
+    this.jerseyNumber = data.jerseyNumber;
   }
 }

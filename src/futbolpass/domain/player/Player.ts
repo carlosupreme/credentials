@@ -5,10 +5,10 @@ import { PlayerTeamDetails } from "./PlayerTeamDetails";
 export class Player extends AggregateRoot<PlayerId> {
   constructor(
     id: PlayerId,
-    readonly teamDetails: PlayerTeamDetails,
-    readonly fullName: string,
-    readonly age: number,
-    readonly photo: string
+    public teamDetails: PlayerTeamDetails,
+    public fullName: string,
+    public age: number,
+    public photo: string
   ) {
     super(id);
   }
@@ -28,5 +28,16 @@ export class Player extends AggregateRoot<PlayerId> {
     );
 
     return player;
+  }
+
+
+  update(data: {
+    fullName: string,
+    age: number,
+    photo: string,
+  }) {
+    this.fullName = data.fullName;
+    this.age = data.age;
+    this.photo = data.photo;
   }
 }

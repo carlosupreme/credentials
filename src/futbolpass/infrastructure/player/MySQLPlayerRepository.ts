@@ -28,10 +28,31 @@ interface TeamDetailsMySQL extends RowDataPacket {
 @injectable()
 export class MySQLPlayerRepository
   extends DomainEventBus
-  implements PlayerRepository
-{
+  implements PlayerRepository {
   constructor(readonly dbContext: MySQLConnection, mediator: Mediator) {
     super(mediator);
+  }
+
+  
+  async update(id: PlayerId, player: Player): Promise<void> {
+    await this.dbContext.query(
+      "UPDATE players SET full_name = ?, age = ?, photo = ? WHERE id = ?",
+      [
+        player.fullName,
+        player.age,
+        player.photo,
+        id.value,
+      ]
+    );
+
+    await this.dbContext.query(
+      "UPDATE player_team_details SET position = ?, jersey_number = ? WHERE id = ?",
+      [
+        player.teamDetails.position,
+        player.teamDetails.jerseyNumber,
+        player.teamDetails.id.value,
+      ]
+    );
   }
 
   async all(): Promise<Player[]> {

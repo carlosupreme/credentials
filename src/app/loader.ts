@@ -23,6 +23,7 @@ import "../futbolpass/application/queries/team/GetTeamByIdQueryHandler";
 import "../futbolpass/application/commands/player/CreatePlayerCommandHandler";
 import "../futbolpass/application/queries/player/GetPlayerByIdQueryHandler";
 import "../futbolpass/application/queries/player/GetAllPlayersQueryHandler";
+import "../futbolpass/application/commands/player/update/UpdatePlayerCommandHandler";
 
 import "../futbolpass/application/commands/match/CreateMatchCommandHandler";
 import "../futbolpass/application/queries/match/GetAllMatchesQueryHandler";

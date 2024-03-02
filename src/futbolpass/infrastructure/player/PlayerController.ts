@@ -10,6 +10,7 @@ import { ErrorOr } from "../../../shared/domain/errors/ErrorOr";
 import { PlayerResponse } from "../../application/commands/player/CreatePlayerResponse";
 import { GetPlayerByIdQuery } from "../../application/queries/player/GetPlayerByIdQuery";
 import { GetAllPlayersQuery } from "../../application/queries/player/GetAllPlayersQuery";
+import { UpdatePlayerCommand } from "../../application/commands/player/update/UpdatePlayerCommand";
 
 @controller("/player")
 export class PlayerController extends ApiController {
@@ -66,6 +67,33 @@ export class PlayerController extends ApiController {
 
     return res.json({
       message: "Player created",
+      player: result.getValue(),
+    });
+  }
+
+  @authenticated("put", "/:id")
+  async update(@request() req: Request, @response() res: Response) {
+    const { id } = req.params;
+    const { fullName, age, photo, teamId, position, jerseyNumber } = req.body;
+    const command = new UpdatePlayerCommand
+      (
+        id,
+        fullName,
+        age,
+        photo,
+        teamId,
+        position,
+        jerseyNumber
+      );
+
+    const result = await this.mediator.send<ErrorOr<PlayerResponse>>(command);
+
+    if (result.isError()) {
+      return this.problem(result.errors!, res);
+    }
+
+    return res.json({
+      message: "Player updated",
       player: result.getValue(),
     });
   }

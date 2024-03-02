@@ -5,4 +5,5 @@ export interface PlayerRepository {
   add: (player: Player) => Promise<void>;
   findById: (id: PlayerId) => Promise<Player | null>;
   all: () => Promise<Player[]>;
+  update: (id: PlayerId, player: Player) => Promise<void>;
 }
